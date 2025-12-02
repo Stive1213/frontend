@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Line } from "react-chartjs-2";
+
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://backend-bkzz.onrender.com';
 import {
   Chart as ChartJS,
   LineElement,
@@ -35,11 +37,11 @@ function Dashboard() {
     const headers = { Authorization: `Bearer ${token}` };
 
     Promise.all([
-      axios.get("http://localhost:5000/api/tasks", { headers }),
-      axios.get("http://localhost:5000/api/transactions", { headers }),
-      axios.get("http://localhost:5000/api/events", { headers }),
-      axios.get("http://localhost:5000/api/habits", { headers }),
-      axios.get("http://localhost:5000/api/journal", { headers }),
+      axios.get(`${API_BASE_URL}/api/tasks`, { headers }),
+      axios.get(`${API_BASE_URL}/api/transactions`, { headers }),
+      axios.get(`${API_BASE_URL}/api/events`, { headers }),
+      axios.get(`${API_BASE_URL}/api/habits`, { headers }),
+      axios.get(`${API_BASE_URL}/api/journal`, { headers }),
     ])
       .then(([tasksRes, transRes, eventsRes, habitsRes, journalRes]) => {
         setTasks(tasksRes.data);

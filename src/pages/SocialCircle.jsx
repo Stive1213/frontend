@@ -24,7 +24,7 @@ function SocialCircle() {
   const fileInputRef = useRef(null);
   const socketRef = useRef(null);
   const typingTimeoutRef = useRef(null);
-  const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+  const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://backend-bkzz.onrender.com';
 
   // Initialize socket connection
   useEffect(() => {

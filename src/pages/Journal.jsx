@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card, Button, Input, Alert } from '../components/ui';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://backend-bkzz.onrender.com';
+
 function Journal() {
   const [entries, setEntries] = useState([]);
   const [newEntry, setNewEntry] = useState({
@@ -31,7 +33,7 @@ function Journal() {
     }
 
     axios
-      .get('http://localhost:5000/api/journal', {
+      .get(`${API_BASE_URL}/api/journal`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => setEntries(response.data))
@@ -56,7 +58,7 @@ function Journal() {
     const entry = { date: currentDate, text: newEntry.text, mood: newEntry.mood };
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/journal',
+        `${API_BASE_URL}/api/journal`,
         entry,
         { headers: { Authorization: `Bearer ${token}` } }
       );

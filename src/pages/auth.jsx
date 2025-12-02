@@ -100,10 +100,24 @@ function Auth() {
       }
     } catch (err) {
       console.error('Error:', err);
-      if (err.code === 'ERR_NETWORK') {
-        setError('Network error: Backend might not be running');
+      console.error('Error details:', {
+        code: err.code,
+        message: err.message,
+        response: err.response,
+        request: err.request,
+        config: err.config
+      });
+      
+      if (err.code === 'ERR_NETWORK' || err.message === 'Network Error') {
+        setError('Network error: Unable to reach backend server. This could be due to:\n1. Backend server is not running or sleeping (Render free tier)\n2. CORS configuration issue\n3. Network connectivity problem\n\nPlease check the browser console for more details.');
+      } else if (err.code === 'ECONNABORTED') {
+        setError('Request timeout: The server took too long to respond. The backend might be sleeping (Render free tier takes time to wake up).');
+      } else if (err.response) {
+        // Server responded with error status
+        const errorMessage = err.response?.data?.error || err.response?.data?.message || `Server error: ${err.response.status}`;
+        setError(errorMessage);
       } else {
-        const errorMessage = err.response?.data?.error || err.message || 'Something went wrong';
+        const errorMessage = err.message || 'Something went wrong. Please try again.';
         setError(errorMessage);
       }
     } finally {

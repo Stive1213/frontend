@@ -3,6 +3,8 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import axios from 'axios';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://backend-bkzz.onrender.com';
+
 function CalendarPage() {
   const [events, setEvents] = useState([]);
   const [newEvent, setNewEvent] = useState({
@@ -23,7 +25,7 @@ function CalendarPage() {
     }
 
     axios
-      .get('http://localhost:5000/api/events', {
+      .get(`${API_BASE_URL}/api/events`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => setEvents(response.data))
@@ -50,7 +52,7 @@ function CalendarPage() {
     const event = { ...newEvent, inviteLink };
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/events',
+        `${API_BASE_URL}/api/events`,
         event,
         { headers: { Authorization: `Bearer ${token}` } }
       );

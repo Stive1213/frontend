@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { authAPI, gamificationAPI } from "../services/api";
 import { useAuth } from "../contexts/AuthContext";
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://backend-bkzz.onrender.com';
+
 function Navbar({ toggleSidebar, toggleTheme, theme, isSidebarOpen }) {
   const { user: authUser, logout: authLogout } = useAuth();
   const [gamificationStats, setGamificationStats] = useState({
@@ -49,7 +51,7 @@ function Navbar({ toggleSidebar, toggleTheme, theme, isSidebarOpen }) {
           const profileImageUrl = user.profileImage?.startsWith("http")
             ? user.profileImage
             : user.profileImage?.startsWith("/")
-            ? `http://localhost:5000${user.profileImage}`
+            ? `${API_BASE_URL}${user.profileImage}`
             : "https://via.placeholder.com/40";
 
           setUserData({

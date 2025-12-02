@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://backend-bkzz.onrender.com';
+
 function Gamification() {
   const [totalPoints, setTotalPoints] = useState(0);
   const [recentEarnings, setRecentEarnings] = useState([]);
@@ -23,19 +25,19 @@ function Gamification() {
       const headers = { Authorization: `Bearer ${token}` };
 
       // Fetch points
-      const pointsRes = await axios.get('http://localhost:5000/api/gamification/points', { headers });
+      const pointsRes = await axios.get(`${API_BASE_URL}/api/gamification/points`, { headers });
       setTotalPoints(pointsRes.data.totalPoints);
 
       // Fetch recent earnings
-      const earningsRes = await axios.get('http://localhost:5000/api/gamification/earnings', { headers });
+      const earningsRes = await axios.get(`${API_BASE_URL}/api/gamification/earnings`, { headers });
       setRecentEarnings(earningsRes.data);
 
       // Fetch badges
-      const badgesRes = await axios.get('http://localhost:5000/api/gamification/badges', { headers });
+      const badgesRes = await axios.get(`${API_BASE_URL}/api/gamification/badges`, { headers });
       setBadges(badgesRes.data);
 
       // Fetch leaderboard
-      const leaderboardRes = await axios.get('http://localhost:5000/api/gamification/leaderboard', {
+      const leaderboardRes = await axios.get(`${API_BASE_URL}/api/gamification/leaderboard`, {
         headers,
         params: { optIn: isOptedIn },
       });
@@ -67,7 +69,7 @@ function Gamification() {
     setIsOptedIn(newOptIn);
     try {
       await axios.put(
-        'http://localhost:5000/api/gamification/leaderboard/opt-in',
+        `${API_BASE_URL}/api/gamification/leaderboard/opt-in`,
         { optIn: newOptIn },
         { headers: { Authorization: `Bearer ${token}` } }
       );

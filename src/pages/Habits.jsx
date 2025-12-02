@@ -4,6 +4,8 @@ import { Chart as ChartJS, LineElement, PointElement, LinearScale, Title, Catego
 import axios from 'axios';
 import { Card, Button, Input, Alert } from '../components/ui';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://backend-bkzz.onrender.com';
+
 ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale, Tooltip, Legend);
 
 function Habits() {
@@ -27,7 +29,7 @@ function Habits() {
     }
 
     axios
-      .get('http://localhost:5000/api/habits', {
+      .get(`${API_BASE_URL}/api/habits`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -51,7 +53,7 @@ function Habits() {
     const token = localStorage.getItem('token');
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/habits',
+        `${API_BASE_URL}/api/habits`,
         newHabit,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -95,7 +97,7 @@ function Habits() {
 
     try {
       await axios.put(
-        `http://localhost:5000/api/habits/${habitId}`,
+        `${API_BASE_URL}/api/habits/${habitId}`,
         { streak: newStreak, completionHistory: newCompletionHistory },
         { headers: { Authorization: `Bearer ${token}` } }
       );

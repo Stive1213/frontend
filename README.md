@@ -16,10 +16,10 @@ A modern React frontend for the LifeHub application with Google Sign-In integrat
 Create a `.env` file in the `Frontend` directory (optional):
 
 ```env
-VITE_API_URL=http://localhost:5000
+VITE_API_URL=https://backend-bkzz.onrender.com
 ```
 
-If not set, defaults to `http://localhost:5000`.
+If not set, defaults to `https://backend-bkzz.onrender.com`.
 
 ## Installation
 

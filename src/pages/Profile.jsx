@@ -4,6 +4,8 @@ import { useAuth } from '../contexts/AuthContext';
 import { Card, Button, Input, LoadingSpinner, Alert } from '../components/ui';
 import ProfilePictureGallery from '../components/ProfilePictureGallery';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://backend-bkzz.onrender.com';
+
 function Profile() {
   const { user: authUser, fetchUser } = useAuth();
   const [user, setUser] = useState(null);
@@ -59,7 +61,7 @@ function Profile() {
           setImagePreview(
             userData.profileImage?.startsWith('http')
               ? userData.profileImage
-              : `http://localhost:5000${userData.profileImage}`
+              : `${API_BASE_URL}${userData.profileImage}`
           );
         } else {
           setError(response.data.error || 'Failed to fetch user data');
@@ -173,7 +175,7 @@ function Profile() {
           setImagePreview(
             updatedUser.profileImage?.startsWith('http')
               ? updatedUser.profileImage
-              : `http://localhost:5000${updatedUser.profileImage}`
+              : `${API_BASE_URL}${updatedUser.profileImage}`
           );
           // Refresh auth context
           fetchUser();
@@ -192,7 +194,7 @@ function Profile() {
   const getProfileImageUrl = (imagePath) => {
     if (!imagePath || imagePath === 'https://via.placeholder.com/40') return null;
     if (imagePath.startsWith('http')) return imagePath;
-    return `http://localhost:5000${imagePath}`;
+    return `${API_BASE_URL}${imagePath}`;
   };
 
   const getInitials = () => {
@@ -437,7 +439,7 @@ function Profile() {
                 {profilePictures.map((pic) => (
                   <div key={pic.id} className="relative group">
                     <img
-                      src={pic.image_url.startsWith('http') ? pic.image_url : `http://localhost:5000${pic.image_url}`}
+                      src={pic.image_url.startsWith('http') ? pic.image_url : `${API_BASE_URL}${pic.image_url}`}
                       alt="Profile"
                       className="w-24 h-24 rounded-full object-cover border-2 border-primary cursor-pointer hover:opacity-80 transition-smooth"
                       onClick={() => {
@@ -508,7 +510,7 @@ function Profile() {
                     setImagePreview(
                       user.profileImage?.startsWith('http')
                         ? user.profileImage
-                        : `http://localhost:5000${user.profileImage}`
+                        : `${API_BASE_URL}${user.profileImage}`
                     );
                   }
                 }}

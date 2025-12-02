@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card, Button, Input, Alert } from '../components/ui';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://backend-bkzz.onrender.com';
+
 function TasksGoals() {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState({
@@ -32,7 +34,7 @@ function TasksGoals() {
 
     // Fetch tasks
     axios
-      .get('http://localhost:5000/api/tasks', {
+      .get(`${API_BASE_URL}/api/tasks`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => setTasks(response.data))
@@ -40,7 +42,7 @@ function TasksGoals() {
 
     // Fetch goals
     axios
-      .get('http://localhost:5000/api/goals', {
+      .get(`${API_BASE_URL}/api/goals`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => setGoals(response.data))
@@ -65,7 +67,7 @@ function TasksGoals() {
     const token = localStorage.getItem('token');
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/tasks',
+        `${API_BASE_URL}/api/tasks`,
         { ...newTask, isDone: false },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -81,7 +83,7 @@ function TasksGoals() {
     const token = localStorage.getItem('token');
     try {
       await axios.put(
-        `http://localhost:5000/api/tasks/${taskId}`,
+        `${API_BASE_URL}/api/tasks/${taskId}`,
         { isDone: !task.isDone },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -119,7 +121,7 @@ function TasksGoals() {
     const token = localStorage.getItem('token');
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/goals',
+        `${API_BASE_URL}/api/goals`,
         { ...newGoal, progress: parseInt(newGoal.progress) || 0 },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -140,7 +142,7 @@ function TasksGoals() {
     const token = localStorage.getItem('token');
     try {
       await axios.put(
-        `http://localhost:5000/api/goals/${editingGoal.id}`,
+        `${API_BASE_URL}/api/goals/${editingGoal.id}`,
         { ...editingGoal, progress: parseInt(editingGoal.progress) },
         { headers: { Authorization: `Bearer ${token}` } }
       );

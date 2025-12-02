@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://backend-bkzz.onrender.com';
 
 // Create axios instance
 const api = axios.create({
@@ -8,7 +8,8 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true, // Important for session cookies
+  withCredentials: true, // Backend allows credentials (access-control-allow-credentials: true)
+  timeout: 30000, // 30 second timeout
 });
 
 // Request interceptor to add auth token
@@ -29,6 +30,33 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
+    // Handle CORS errors
+    if (error.code === 'ERR_NETWORK' || error.message === 'Network Error' || (error.response?.status === 0)) {
+      const frontendOrigin = window.location.origin;
+      const corsErrorMsg = `CORS Error: The backend is configured to only allow requests from specific origins. 
+      
+Current frontend origin: ${frontendOrigin}
+Backend URL: ${API_BASE_URL}
+
+The backend CORS configuration needs to include your frontend's origin. 
+If you're running locally, the backend needs to allow 'http://localhost:5173' (or your local port).
+If you've deployed the frontend, update the backend CORS to include your frontend URL.`;
+      
+      console.error('CORS/Network Error:', {
+        frontendOrigin,
+        backendURL: API_BASE_URL,
+        error: error.message,
+        code: error.code
+      });
+      return Promise.reject(new Error(corsErrorMsg));
+    }
+    
+    // Handle timeout errors
+    if (error.code === 'ECONNABORTED') {
+      console.error('Request timeout: Backend took too long to respond');
+      return Promise.reject(new Error('Request timeout. The server is taking too long to respond.'));
+    }
+    
     if (error.response?.status === 401) {
       // Token expired or invalid
       localStorage.removeItem('token');

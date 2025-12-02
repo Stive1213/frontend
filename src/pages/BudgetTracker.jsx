@@ -4,6 +4,8 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import axios from 'axios';
 import { Card, Button, Input, Alert } from '../components/ui';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://backend-bkzz.onrender.com';
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function BudgetTracker() {
@@ -26,7 +28,7 @@ function BudgetTracker() {
     }
 
     axios
-      .get('http://localhost:5000/api/transactions', {
+      .get(`${API_BASE_URL}/api/transactions`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => setTransactions(response.data))
@@ -49,7 +51,7 @@ function BudgetTracker() {
     };
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/transactions',
+        `${API_BASE_URL}/api/transactions`,
         transaction,
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://backend-bkzz.onrender.com';
+
 function AIPoweredAssistant() {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState('');
@@ -9,7 +11,7 @@ function AIPoweredAssistant() {
   // Fetch assistant response from backend
   const getAssistantResponse = async (input) => {
     try {
-      const response = await fetch('http://localhost:5000/api/assistant', {
+      const response = await fetch(`${API_BASE_URL}/api/assistant`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -92,7 +94,7 @@ function AIPoweredAssistant() {
     if (!items || Object.keys(items).length === 0) return;
     
     try {
-      const response = await fetch('http://localhost:5000/api/assistant/save-items', {
+      const response = await fetch(`${API_BASE_URL}/api/assistant/save-items`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
