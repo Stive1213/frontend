@@ -1,0 +1,50 @@
+import { io } from 'socket.io-client';
+
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+let socket = null;
+
+export const connectSocket = (token) => {
+  if (socket?.connected) {
+    return socket;
+  }
+
+  socket = io(API_BASE_URL, {
+    auth: {
+      token,
+    },
+    transports: ['websocket', 'polling'],
+  });
+
+  socket.on('connect', () => {
+    console.log('Socket connected');
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Socket disconnected');
+  });
+
+  socket.on('error', (error) => {
+    console.error('Socket error:', error);
+  });
+
+  return socket;
+};
+
+export const disconnectSocket = () => {
+  if (socket) {
+    socket.disconnect();
+    socket = null;
+  }
+};
+
+export const getSocket = () => {
+  return socket;
+};
+
+export default {
+  connectSocket,
+  disconnectSocket,
+  getSocket,
+};
+

@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@import "./styles/design-tokens.css";
+@import "./styles/component-examples.css";
+
+/* Apply theme to root element */
+html {
+  color-scheme: light dark;
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+}
+
+/* Default to light mode */
+:root {
+  color-scheme: light;
+}
+
+/* Dark mode */
+[data-theme="dark"],
+.dark {
+  color-scheme: dark;
+}
+
+/* Legacy gradient background - now uses tokens */
+.gradient-bg {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg) 100%);
+}
+
+/* Ensure smooth transitions when switching themes */
+* {
+  transition: background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+              border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+              color 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Exclude animations from transitioning */
+*, *::before, *::after {
+  animation-duration: inherit;
+  animation-timing-function: inherit;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}

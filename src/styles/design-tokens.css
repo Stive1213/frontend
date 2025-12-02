@@ -1,0 +1,604 @@
+/**
+ * LifeHub Design System
+ * Complete Light & Dark Mode Color Tokens
+ * 
+ * Usage: Import this file in your main CSS and use CSS variables
+ * or Tailwind classes that reference these tokens.
+ */
+
+:root {
+  /* ============================================
+     LIGHT MODE TOKENS - Apple-Inspired
+     ============================================ */
+  
+  /* Background Colors - Warmer, softer grays */
+  --bg: #fbfbfd;
+  --bg-secondary: #f5f5f7;
+  --bg-tertiary: #eeeeee;
+  
+  /* Surface Colors */
+  --surface: #ffffff;
+  --surface-elevated: #ffffff;
+  --surface-hover: #f9f9fb;
+  --surface-active: #f5f5f7;
+  
+  /* Sidebar */
+  --sidebar-bg: #ffffff;
+  --sidebar-border: #e5e5e7;
+  --sidebar-hover: #f5f5f7;
+  --sidebar-active: #e8f4fd;
+  --sidebar-text: #1d1d1f;
+  --sidebar-text-muted: #86868b;
+  
+  /* Header/Navbar */
+  --header-bg: rgba(255, 255, 255, 0.8);
+  --header-border: #e5e5e7;
+  --header-text: #1d1d1f;
+  --header-text-muted: #86868b;
+  
+  /* Cards */
+  --card-bg: #ffffff;
+  --card-border: #e5e5e7;
+  --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --card-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.1);
+  
+  /* Input Fields */
+  --input-bg: #f5f5f7;
+  --input-border: #d2d2d7;
+  --input-border-focus: #0071e3;
+  --input-text: #1d1d1f;
+  --input-placeholder: #86868b;
+  --input-disabled-bg: #f5f5f7;
+  --input-disabled-text: #c7c7cc;
+  --input-disabled-border: #e5e5e7;
+  
+  /* Borders & Dividers */
+  --border: #e5e5e7;
+  --border-light: #f5f5f7;
+  --border-strong: #d2d2d7;
+  --divider: #e5e5e7;
+  
+  /* Primary Colors - Apple Blue */
+  --primary: #0071e3;
+  --primary-hover: #0077ed;
+  --primary-active: #0066cc;
+  --primary-light: #e3f2fd;
+  --primary-text: #ffffff;
+  
+  /* Secondary Colors */
+  --secondary: #6e6e73;
+  --secondary-hover: #515154;
+  --secondary-active: #424245;
+  --secondary-light: #f5f5f7;
+  --secondary-text: #ffffff;
+  
+  /* Accent Colors */
+  --accent: #af52de;
+  --accent-hover: #9d47c7;
+  --accent-active: #8b3db0;
+  --accent-light: #f3e5f5;
+  --accent-text: #ffffff;
+  
+  /* Success */
+  --success: #30d158;
+  --success-hover: #28cd41;
+  --success-active: #1fb833;
+  --success-light: #d1f7d6;
+  --success-text: #ffffff;
+  
+  /* Warning */
+  --warning: #ff9500;
+  --warning-hover: #ff8c00;
+  --warning-active: #e67e00;
+  --warning-light: #fff4e6;
+  --warning-text: #ffffff;
+  
+  /* Error */
+  --error: #ff3b30;
+  --error-hover: #ff2d20;
+  --error-active: #e6261a;
+  --error-light: #ffe5e3;
+  --error-text: #ffffff;
+  
+  /* Text Colors */
+  --text-primary: #1d1d1f;
+  --text-secondary: #424245;
+  --text-muted: #86868b;
+  --text-disabled: #c7c7cc;
+  --text-inverse: #ffffff;
+  
+  /* Overlays */
+  --overlay-light: rgba(0, 0, 0, 0.04);
+  --overlay-medium: rgba(0, 0, 0, 0.08);
+  --overlay-heavy: rgba(0, 0, 0, 0.2);
+  --overlay-modal: rgba(0, 0, 0, 0.45);
+  
+  /* Glass/Frosted Effects */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-backdrop: blur(20px) saturate(180%);
+  
+  /* Shadows - Softer, more refined */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.1);
+  
+  /* Scrollbar */
+  --scrollbar-track: #f5f5f7;
+  --scrollbar-thumb: #d2d2d7;
+  --scrollbar-thumb-hover: #86868b;
+  
+  /* Image Overlay (for dark mode compatibility) */
+  --image-overlay: rgba(0, 0, 0, 0);
+}
+
+[data-theme="dark"],
+.dark {
+  /* ============================================
+     DARK MODE TOKENS
+     ============================================ */
+  
+  /* Background Colors */
+  --bg: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  
+  /* Surface Colors */
+  --surface: #1e293b;
+  --surface-elevated: #334155;
+  --surface-hover: #334155;
+  --surface-active: #475569;
+  
+  /* Sidebar */
+  --sidebar-bg: #1e293b;
+  --sidebar-border: #334155;
+  --sidebar-hover: #334155;
+  --sidebar-active: #1e3a8a;
+  --sidebar-text: #f1f5f9;
+  --sidebar-text-muted: #94a3b8;
+  
+  /* Header/Navbar */
+  --header-bg: #1e293b;
+  --header-border: #334155;
+  --header-text: #f1f5f9;
+  --header-text-muted: #94a3b8;
+  
+  /* Cards */
+  --card-bg: #1e293b;
+  --card-border: #334155;
+  --card-shadow: rgba(0, 0, 0, 0.3);
+  --card-shadow-hover: rgba(0, 0, 0, 0.4);
+  
+  /* Input Fields */
+  --input-bg: #334155;
+  --input-border: #475569;
+  --input-border-focus: #818cf8;
+  --input-text: #f1f5f9;
+  --input-placeholder: #94a3b8;
+  --input-disabled-bg: #1e293b;
+  --input-disabled-text: #64748b;
+  --input-disabled-border: #334155;
+  
+  /* Borders & Dividers */
+  --border: #334155;
+  --border-light: #475569;
+  --border-strong: #475569;
+  --divider: #334155;
+  
+  /* Primary Colors */
+  --primary: #818cf8;
+  --primary-hover: #6366f1;
+  --primary-active: #4f46e5;
+  --primary-light: #312e81;
+  --primary-text: #ffffff;
+  
+  /* Secondary Colors */
+  --secondary: #94a3b8;
+  --secondary-hover: #64748b;
+  --secondary-active: #475569;
+  --secondary-light: #1e293b;
+  --secondary-text: #ffffff;
+  
+  /* Accent Colors */
+  --accent: #a78bfa;
+  --accent-hover: #8b5cf6;
+  --accent-active: #7c3aed;
+  --accent-light: #4c1d95;
+  --accent-text: #ffffff;
+  
+  /* Success */
+  --success: #34d399;
+  --success-hover: #10b981;
+  --success-active: #059669;
+  --success-light: #064e3b;
+  --success-text: #ffffff;
+  
+  /* Warning */
+  --warning: #fbbf24;
+  --warning-hover: #f59e0b;
+  --warning-active: #d97706;
+  --warning-light: #78350f;
+  --warning-text: #ffffff;
+  
+  /* Error */
+  --error: #f87171;
+  --error-hover: #ef4444;
+  --error-active: #dc2626;
+  --error-light: #7f1d1d;
+  --error-text: #ffffff;
+  
+  /* Text Colors */
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-disabled: #64748b;
+  --text-inverse: #0f172a;
+  
+  /* Overlays */
+  --overlay-light: rgba(255, 255, 255, 0.05);
+  --overlay-medium: rgba(255, 255, 255, 0.1);
+  --overlay-heavy: rgba(255, 255, 255, 0.2);
+  --overlay-modal: rgba(0, 0, 0, 0.75);
+  
+  /* Glass/Frosted Effects */
+  --glass-bg: rgba(30, 41, 59, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-backdrop: blur(12px);
+  
+  /* Shadows (inverted for dark mode - soft glows) */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px -1px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  
+  /* Glow effects for dark mode */
+  --glow-primary: 0 0 20px rgba(129, 140, 248, 0.3);
+  --glow-accent: 0 0 20px rgba(167, 139, 250, 0.3);
+  --glow-success: 0 0 20px rgba(52, 211, 153, 0.3);
+  
+  /* Scrollbar */
+  --scrollbar-track: #1e293b;
+  --scrollbar-thumb: #475569;
+  --scrollbar-thumb-hover: #64748b;
+  
+  /* Image Overlay (subtle dark overlay for images in dark mode) */
+  --image-overlay: rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Glass/Frosted Panel */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+}
+
+/* Image with dark mode overlay */
+.image-dark-safe {
+  position: relative;
+}
+
+.image-dark-safe::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--image-overlay);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Firefox scrollbar */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* ============================================
+   APPLE-STYLE ANIMATIONS
+   ============================================ */
+
+/* Animation Timing Functions */
+:root {
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --spring-smooth: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Animation Durations */
+:root {
+  --duration-instant: 100ms;
+  --duration-fast: 200ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 700ms;
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(0, 113, 227, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 113, 227, 0.6);
+  }
+}
+
+/* Animation Utility Classes */
+.animate-fade-in {
+  animation: fadeIn var(--duration-normal) var(--ease-out-quart);
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp var(--duration-normal) var(--ease-out-quart);
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown var(--duration-normal) var(--ease-out-quart);
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale var(--duration-normal) var(--spring-smooth);
+}
+
+.animate-scale-in {
+  animation: scaleIn var(--duration-normal) var(--spring-smooth);
+}
+
+.animate-slide-in-right {
+  animation: slideInRight var(--duration-normal) var(--ease-out-quart);
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft var(--duration-normal) var(--ease-out-quart);
+}
+
+.animate-pulse {
+  animation: pulse 2s var(--ease-in-out-quart) infinite;
+}
+
+.animate-float {
+  animation: float 3s var(--ease-in-out-quart) infinite;
+}
+
+.animate-glow {
+  animation: glow 2s var(--ease-in-out-quart) infinite;
+}
+
+/* Transition Utilities */
+.transition-apple {
+  transition: all var(--duration-normal) var(--ease-out-quart);
+}
+
+.transition-apple-fast {
+  transition: all var(--duration-fast) var(--ease-out-quart);
+}
+
+.transition-apple-slow {
+  transition: all var(--duration-slow) var(--ease-out-quart);
+}
+
+.transition-spring {
+  transition: all var(--duration-normal) var(--spring);
+}
+
+.transition-smooth {
+  transition: all var(--duration-normal) var(--spring-smooth);
+}
+
+/* Hover Scale Effect */
+.hover-scale {
+  transition: transform var(--duration-fast) var(--ease-out-quart);
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.hover-scale:active {
+  transform: scale(0.98);
+}
+
+/* Smooth Hover Lift */
+.hover-lift {
+  transition: transform var(--duration-normal) var(--ease-out-quart), 
+              box-shadow var(--duration-normal) var(--ease-out-quart);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* Button Press Effect */
+.btn-press {
+  transition: transform var(--duration-instant) var(--ease-out-quart);
+}
+
+.btn-press:active {
+  transform: scale(0.96);
+}
+
+/* Stagger Animation Delays */
+.stagger-1 {
+  animation-delay: 50ms;
+}
+
+.stagger-2 {
+  animation-delay: 100ms;
+}
+
+.stagger-3 {
+  animation-delay: 150ms;
+}
+
+.stagger-4 {
+  animation-delay: 200ms;
+}
+
+.stagger-5 {
+  animation-delay: 250ms;
+}
+
+/* Card Entrance Animation */
+.card-entrance {
+  animation: fadeInUp var(--duration-normal) var(--ease-out-quart) backwards;
+}
+
+/* Smooth Opacity Transition */
+.transition-opacity {
+  transition: opacity var(--duration-fast) var(--ease-out-quart);
+}
+
+/* Smooth Transform Transition */
+.transition-transform {
+  transition: transform var(--duration-normal) var(--spring-smooth);
+}
+
+/* Smooth All Properties */
+.transition-all-smooth {
+  transition: all var(--duration-normal) var(--spring-smooth);
+}
+
