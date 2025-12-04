@@ -20,7 +20,26 @@ function AIPoweredAssistant() {
         body: JSON.stringify({ question: input }),
       });
       
-      const data = await response.json();
+      // Handle response - check if it's JSON or plain text
+      let data;
+      const contentType = response.headers.get('content-type');
+      try {
+        if (contentType && contentType.includes('application/json')) {
+          data = await response.json();
+        } else {
+          const text = await response.text();
+          // Try to parse as JSON, if it fails use the text as error message
+          try {
+            data = JSON.parse(text);
+          } catch {
+            throw new Error(text || 'Failed to get response');
+          }
+        }
+      } catch (parseError) {
+        // If JSON parsing fails, treat response as error
+        const errorText = await response.text().catch(() => 'Failed to parse response');
+        throw new Error(errorText || 'Failed to get response');
+      }
       
       if (response.ok) {
         return data;
@@ -103,7 +122,24 @@ function AIPoweredAssistant() {
         body: JSON.stringify({ items }),
       });
       
-      const data = await response.json();
+      // Handle response - check if it's JSON or plain text
+      let data;
+      const contentType = response.headers.get('content-type');
+      try {
+        if (contentType && contentType.includes('application/json')) {
+          data = await response.json();
+        } else {
+          const text = await response.text();
+          try {
+            data = JSON.parse(text);
+          } catch {
+            throw new Error(text || 'Failed to save items');
+          }
+        }
+      } catch (parseError) {
+        const errorText = await response.text().catch(() => 'Failed to parse response');
+        throw new Error(errorText || 'Failed to save items');
+      }
       
       if (response.ok) {
         // Update the message to show success
